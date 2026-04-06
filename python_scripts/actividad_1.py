@@ -23,3 +23,12 @@ for e in estudiantes:
 
     print(f"Nombre: {e.nombre}, Edad: {e.edad}, Promedio: {e.promedio}")
 
+# Modificación 
+estudiantes [2].promedio = 5.0
+print (f"El promedio del {estudiantes [2].nombre} ha sido modificado: {estudiantes[2].promedio} ")
+
+print("--- Lista de Estudiantes ---")
+
+for e in estudiantes:
+
+    print(f"Nombre: {e.nombre}, Edad: {e.edad}, Promedio: {e.promedio}")
