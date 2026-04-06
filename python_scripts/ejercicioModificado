@@ -54,6 +54,26 @@ def buscar():
     if not encontrado:
         print(f"\n>> No se encontraron resultados para: '{termino}'")
 
+def exportar():
+    try:
+        # open(...) es como lo que usamos en java:  PrintWriter + FileWriter
+        # "a" (append) es para reemplazar el 'true' que usamos en Java hace exactamente lo mismo
+        # encoding="utf-8 es para que no ponga simbolos raros si hay alguna tilde o ñ
+        with open("agendaContactos2.txt", "a", encoding="utf-8") as escritor:
+            
+            escritor.write("------- MI AGENDA -------\n")
+            
+            # Recorremos la lista de objetos (en Java usabas arreglos y el contador i)
+            for contacto in listaContactos:
+                # Escribimos los datos del objeto en el archivo
+                escritor.write(f"- {contacto.nombre} | {contacto.telefono} | {contacto.correo}\n")
+        
+        # Si todo sale bien FUERA DEL WITH
+        print("El archivo se ha guardado en tu computadora.")
+
+    except Exception as e:
+        # Si el try falla 
+        print(f"No pude guardar porque: {e}")
 
 listaContactos = []
 MAX = 3
