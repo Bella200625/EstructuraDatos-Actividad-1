@@ -5,7 +5,7 @@ class Agenda:
         self.correo = correo 
 
     def mostrarAgenda (self):
-        print ("==o==o===||====o===o===o====||====o===o===o====||====o===o==")
+        print ("=======================================")
         print (" ")
         print (f"Nombre: {self.nombre}")
         print (f"Telefono: {self.telefono}")
@@ -15,7 +15,7 @@ class Agenda:
 def registrar():
     # Verificamos el espacio disponible
     if len(listaContactos) < MAX:
-        print("\n--- NUEVO REGISTRO ---")
+        print("\n-------- NUEVO REGISTRO --------")
         
         # Capturamos los datos ingresados por el usuario 
         nom = input("Nombre: ")
@@ -33,11 +33,27 @@ def registrar():
         # Control de desbordamiento
         print("ERROR: La agenda está llena.")
 
-def buscar():
-    print("...")
 
-def exportar():
-    print("...")
+
+def buscar():
+    if not listaContactos:
+        print("\n>> La agenda está vacía, no hay nada que buscar.")
+        return # Salimos de la función si no hay datos
+
+    print("\n-------- BUSCAR CONTACTO --------")
+    termino = input("Ingrese el nombre del contacto a buscar: ")
+    encontrado = False 
+
+    for contacto in listaContactos:
+        # Usamos .startswith() y buscaremos en ambos atributos
+        if contacto.nombre.lower().startswith(termino) or contacto.correo.lower().startswith(termino):
+            print("\n>> Coincidencia encontrada:")
+            contacto.mostrarAgenda()
+            encontrado = True
+
+    if not encontrado:
+        print(f"\n>> No se encontraron resultados para: '{termino}'")
+
 
 listaContactos = []
 MAX = 3
