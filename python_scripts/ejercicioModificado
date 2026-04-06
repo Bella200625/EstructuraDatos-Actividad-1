@@ -1,0 +1,49 @@
+class Agenda: 
+    def __init__ (self, nombre, telefono, correo):
+        self.nombre = nombre
+        self.telefono = telefono
+        self.correo = correo 
+
+    def mostrarAgenda (self):
+        print ("==o==o===||====o===o===o====||====o===o===o====||====o===o==")
+        print (" ")
+        print (f"Nombre: {self.nombre}")
+        print (f"Telefono: {self.telefono}")
+        print (f"Correo: {self.correo}")
+
+
+
+listaContactos = []
+MAX = 3
+
+def main():
+    opcion = -1
+    
+    # Este es el bucle que mantiene el programa vivo
+    while opcion != 0:
+        print("\n-------- AGENDA --------")
+        print("1. Registrar contacto")
+        print("2. Buscar contacto")
+        print("3. Exportar a TXT")
+        print("0. Salir")
+        
+        # control de lo que ingresa el usuario 
+        try:
+            opcion = int(input("Ingrese su opción: "))
+        except ValueError:
+            # Si el cliente mete algo que no es un número esto se repite
+            print("ERROR: Por favor, ingrese un número válido.")
+            continue 
+
+        # control
+        if opcion == 1:
+            registrar() 
+            
+        elif opcion == 2:
+            buscar()    
+        elif opcion == 3:
+            exportar()  
+        elif opcion == 0:
+            print("CHAO!! Programa finalizado.")
+        else:
+            print("Esa opción no existe, intente de nuevo.")

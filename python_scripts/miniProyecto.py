@@ -25,6 +25,6 @@ ListaHeroe = [
     Heroe("Vesperia", "Pollen", "Accion", [[2, " Intermedia"], [65, "Activo"]])
 ]
 
-#llamemos metodo lista_Maestra 
+#llamemos metodo listaMaestra 
 for prodigio in ListaHeroe:
     prodigio.listaMaestra()
