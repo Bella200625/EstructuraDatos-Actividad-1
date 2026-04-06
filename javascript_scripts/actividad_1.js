@@ -11,3 +11,7 @@ console.log("--- Lista de Estudiantes ---");
 //recorremos
 estudiantes.forEach(e => {console.log(`Nombre: ${e.nombre}, Edad: ${e.edad}, Promedio: ${e.promedio}`);}
 );
+
+//Modificamos
+estudiantes[1].promedio = 4.0;
+console.log(`\nPromedio modificado de ${estudiantes[1].nombre}: ${estudiantes[1].promedio}`);
