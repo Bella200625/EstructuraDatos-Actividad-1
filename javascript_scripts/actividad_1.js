@@ -6,4 +6,8 @@ const E3 = { nombre: "Kagami", edad: 19, promedio: 5.0 };
 
 // Guardemos en arreglo
 const estudiantes = [E1, E2, E3];
+console.log("--- Lista de Estudiantes ---");
 
+//recorremos
+estudiantes.forEach(e => {console.log(`Nombre: ${e.nombre}, Edad: ${e.edad}, Promedio: ${e.promedio}`);}
+);
