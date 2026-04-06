@@ -12,6 +12,32 @@ class Agenda:
         print (f"Correo: {self.correo}")
 
 
+def registrar():
+    # Verificamos el espacio disponible
+    if len(listaContactos) < MAX:
+        print("\n--- NUEVO REGISTRO ---")
+        
+        # Capturamos los datos ingresados por el usuario 
+        nom = input("Nombre: ")
+        tel = input("Teléfono: ")
+        cor = input("Correo: ")
+        
+        # Creamos el Objeto
+        newObjeto = Agenda(nom, tel, cor)
+        
+        # Guardamos el objeto en el arreglo 
+        listaContactos.append(newObjeto)
+        
+        print(f">> {nom} guardado en listaContactos.")
+    else:
+        # Control de desbordamiento
+        print("ERROR: La agenda está llena.")
+
+def buscar():
+    print("...")
+
+def exportar():
+    print("...")
 
 listaContactos = []
 MAX = 3
@@ -25,6 +51,7 @@ def main():
         print("1. Registrar contacto")
         print("2. Buscar contacto")
         print("3. Exportar a TXT")
+        print("4. Ver contactos de tu agenda")
         print("0. Salir")
         
         # control de lo que ingresa el usuario 
@@ -42,8 +69,19 @@ def main():
         elif opcion == 2:
             buscar()    
         elif opcion == 3:
-            exportar()  
+            exportar()
+        elif opcion == 4:
+            if not listaContactos: # Si la lista está vacía
+                print(">> La agenda está vacía. Registra a alguien primero.")
+            else:
+                print("\n--- LISTA COMPLETA DE CONTACTOS ---")
+                for e in listaContactos:
+                    e.mostrarAgenda()
         elif opcion == 0:
             print("CHAO!! Programa finalizado.")
+        
         else:
             print("Esa opción no existe, intente de nuevo.")
+
+if __name__ == "__main__":
+    main()
