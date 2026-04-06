@@ -8,6 +8,18 @@ class Estudiante:
     promedio: float
 
 # Inicialización 
-E1 = Estudiante("Bella", 19, 4.5)
-E2 = Estudiante("Juan", 21, 3.8)
-E3 = Estudiante("Maria", 20, 4.2)
+E1 = Estudiante("Marino", 19, 4.6)
+E2 = Estudiante("Nino", 21, 4.8)
+E3 = Estudiante("Yuleka", 20, 3.2)
+
+
+# Guardar en arreglo
+estudiantes = [E1, E2, E3] 
+
+# Recorrido
+print("--- Lista de Estudiantes ---")
+
+for e in estudiantes:
+
+    print(f"Nombre: {e.nombre}, Edad: {e.edad}, Promedio: {e.promedio}")
+
