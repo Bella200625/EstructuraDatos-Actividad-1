@@ -5,7 +5,6 @@ class Heroe {
         this.concepto = concepto;
         this.fase = fase;
     }
-
     listaMaestra() {
         console.log("==o==o===||====o===o===o====||====o===o===o====||====o===o==");
         console.log(" ")
@@ -17,7 +16,6 @@ class Heroe {
         console.log(`Estado: ${this.fase[1][1]} (${this.fase[1][0]}% confianza)`);
     }
 }
-
 // Creamos el Arreglo de Objetos
 const ListaHeroe = [
     new Heroe("Ladybug", "Tikki", "Creacion", [[4, "Experta"], [95, "Activo"]]),
@@ -27,7 +25,6 @@ const ListaHeroe = [
     new Heroe("Rena Rouge", "Trixx", "Ilusion", [[3, "Avanzada"], [90, "Activo"]]),
     new Heroe("Vesperia", "Pollen", "Accion", [[2, "Intermedia"], [70, "Activo"]])
 ];
-
 // El Recorrido Usando forEach 
 ListaHeroe.forEach(prodigio => {
     prodigio.listaMaestra();
