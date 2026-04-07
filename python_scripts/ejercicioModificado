@@ -1,0 +1,123 @@
+class Agenda: 
+    def __init__ (self, nombre, telefono, correo):
+        self.nombre = nombre
+        self.telefono = telefono
+        self.correo = correo 
+
+    def mostrarAgenda (self):
+        print ("=======================================")
+        print (" ")
+        print (f"Nombre: {self.nombre}")
+        print (f"Telefono: {self.telefono}")
+        print (f"Correo: {self.correo}")
+
+
+def registrar():
+    # Verificamos el espacio disponible
+    if len(listaContactos) < MAX:
+        print("\n-------- NUEVO REGISTRO --------")
+        
+        # Capturamos los datos ingresados por el usuario 
+        nom = input("Nombre: ")
+        tel = input("Teléfono: ")
+        cor = input("Correo: ")
+        
+        # Creamos el Objeto
+        newObjeto = Agenda(nom, tel, cor)
+        
+        # Guardamos el objeto en el arreglo 
+        listaContactos.append(newObjeto)
+        
+        print(f">> {nom} guardado en listaContactos.")
+    else:
+        # Control de desbordamiento
+        print("ERROR: La agenda está llena.")
+
+
+
+def buscar():
+    if not listaContactos:
+        print("\n>> La agenda está vacía, no hay nada que buscar.")
+        return # Salimos de la función si no hay datos
+
+    print("\n-------- BUSCAR CONTACTO --------")
+    termino = input("Ingrese el nombre del contacto a buscar: ")
+    encontrado = False 
+
+    for contacto in listaContactos:
+        # Usamos .startswith() y buscaremos en ambos atributos
+        if contacto.nombre.lower().startswith(termino) or contacto.correo.lower().startswith(termino):
+            print("\n>> Coincidencia encontrada:")
+            contacto.mostrarAgenda()
+            encontrado = True
+
+    if not encontrado:
+        print(f"\n>> No se encontraron resultados para: '{termino}'")
+
+def exportar():
+    try:
+        # open(...) es como lo que usamos en java:  PrintWriter + FileWriter
+        # "a" (append) es para reemplazar el 'true' que usamos en Java hace exactamente lo mismo
+        # encoding="utf-8 es para que no ponga simbolos raros si hay alguna tilde o ñ
+        with open("agendaContactos2.txt", "a", encoding="utf-8") as escritor:
+            
+            escritor.write("------- MI AGENDA -------\n")
+            
+            # Recorremos la lista de objetos (en Java usabas arreglos y el contador i)
+            for contacto in listaContactos:
+                # Escribimos los datos del objeto en el archivo
+                escritor.write(f"- {contacto.nombre} | {contacto.telefono} | {contacto.correo}\n")
+        
+        # Si todo sale bien FUERA DEL WITH
+        print("El archivo se ha guardado en tu computadora.")
+
+    except Exception as e:
+        # Si el try falla 
+        print(f"No pude guardar porque: {e}")
+
+listaContactos = []
+MAX = 3
+
+def main():
+    opcion = -1
+    
+    # Este es el bucle que mantiene el programa vivo
+    while opcion != 0:
+        print("\n-------- AGENDA --------")
+        print("1. Registrar contacto")
+        print("2. Buscar contacto")
+        print("3. Exportar a TXT")
+        print("4. Ver contactos de tu agenda")
+        print("0. Salir")
+        
+        # control de lo que ingresa el usuario 
+        try:
+            opcion = int(input("Ingrese su opción: "))
+        except ValueError:
+            # Si el cliente mete algo que no es un número esto se repite
+            print("ERROR: Por favor, ingrese un número válido.")
+            continue 
+
+        # control
+        if opcion == 1:
+            registrar() 
+            
+        elif opcion == 2:
+            buscar()    
+        elif opcion == 3:
+            exportar()
+        elif opcion == 4:
+            if not listaContactos: # Si la lista está vacía
+                print(">> La agenda está vacía. Registra a alguien primero.")
+            else:
+                print("\n--- LISTA COMPLETA DE CONTACTOS ---")
+                for e in listaContactos:
+                    e.mostrarAgenda()
+        elif opcion == 0:
+            print("CHAO!! Programa finalizado.")
+        
+        else:
+            print("Esa opción no existe, intente de nuevo.")
+
+if __name__ == "__main__":
+    main()
